@@ -1,0 +1,30 @@
+  public boolean chkPalindrome() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+
+        while (fast != null && fast.next!=null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        //反转
+        ListNode p = slow.next;
+        while (p != null) {
+            ListNode pNext = p.next;
+            //反转
+            p.next = slow;
+            slow = p;
+            p = pNext;
+        }
+        while (slow!=head){
+            if(slow.data!=head.data){
+                return false;
+            }//偶数
+            if (this.head.next==slow){
+                return true;
+
+            }
+            slow=slow.next; //slow往前    head 往后
+            head=head.next;
+        }
+       return true;//直到相遇
+    }
