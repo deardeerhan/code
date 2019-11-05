@@ -1,0 +1,42 @@
+  public ListNode partition(int x) {
+        ListNode cur = this.head;
+        ListNode beforeStart = null;
+        ListNode beforeEnd = null;
+        ListNode afterStart = null;
+        ListNode afterEnd = null;
+        while (cur != null) {
+            //cur.data < x
+            if(cur.data < x) {
+                //第一次插入
+                if(beforeStart==null) {
+                    beforeStart=cur;
+                    beforeEnd=cur;
+                }else {
+                    beforeEnd.next=cur;
+                    beforeEnd=beforeEnd.next;
+                }
+                cur=cur.next;
+            }
+            else {
+                //第一次插入
+                if(afterStart == null) {
+                    afterStart=cur;
+                    afterEnd=cur;
+                }else {
+                    afterEnd.next=cur;
+                    afterEnd=afterEnd.next;
+                }
+            }
+            cur=cur.next;
+        }
+
+
+        if(beforeStart==null){
+            return  afterStart;
+        }
+            beforeEnd.next =afterStart;
+        if (afterStart!=null){
+            afterEnd.next=null;
+        }
+            return beforeStart;
+    }
