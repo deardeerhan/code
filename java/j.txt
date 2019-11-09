@@ -1,0 +1,26 @@
+   public int remove(int key){
+        int oldData=-1;
+        ListNode2 cur=this.head;
+        while (cur!=null){
+            if(cur.data==key){
+                oldData=cur.data;
+                if(cur==this.head){
+               
+                    this.head=this.head.next;
+                    this.head.prev=null;
+                    return oldData;
+                }else {
+                    cur.prev.next = cur.next;
+                    if (cur!=this.last){
+                        cur.next.prev = cur.prev;
+                    }
+                    else {
+                        this.last=cur.prev;
+                    }
+                  return oldData;
+                }
+            }
+            cur=cur.next;
+        }
+        return -1;
+    }
