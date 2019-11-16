@@ -1,0 +1,58 @@
+//是否有环
+    public boolean hasCycle(){
+        ListNode fast=this.head;
+        ListNode slow=this.head;
+        while (fast!=null&&fast .next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //返回链表开始入环的第一个节点如果链表无环，则返回null
+    public ListNode detectCycle(){
+        ListNode fast=this.head;
+        ListNode slow=this.head;
+        while (fast!=null&&fast .next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast) {
+             break;
+            }
+            if(fast.next!=null||fast!=null)
+                return null;
+        }
+        fast = this.head;
+        while (fast!=slow){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return fast;
+    }
+
+    //环的长度
+    public int Listlen(){
+        ListNode fast=this.head;
+        ListNode slow=this.head;
+        while (fast!=null&&fast .next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast) {
+                break;
+            }
+            if(fast.next!=null||fast!=null)
+                return -1;
+        }
+        //slow=fast
+            slow=slow.next;
+             int count=1;
+            while (fast!=slow){
+            slow=slow.next;
+            count++;
+        }
+        return count;
+
+    }
