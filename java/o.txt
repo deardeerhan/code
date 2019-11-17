@@ -1,0 +1,36 @@
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+        int m=scanner.nextInt();
+        int n=scanner.nextInt();
+        int r=scanner.nextInt();
+        int c=scanner.nextInt();
+        int[][] arr=new int[100][100];
+        int k=1;
+
+        for(int b=0;b<=n/2;b++)
+        {
+            for(int j=b;j<m-b-1;j++)
+            {
+                arr[b][j]=k;
+                k++;
+            }
+            for(int i=b;i<n-b-1;i++)
+            {
+                arr[i][m-b-1]=k;
+                k++;
+            }
+            for(int j=m-b-1;j>b;j--)
+            {
+                arr[n-b-1][j]=k;
+                k++;
+            }
+            for(int i=n-b-1;i>b;i--)
+            {
+                arr[i][b]=k;
+                k++;
+            }
+            if(k>=n*m)
+                break;
+        }
+        System.out.println(arr[r-1][c-1]);
+	}
