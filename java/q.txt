@@ -1,0 +1,10 @@
+    //Çå¿Õµ¥Á´±í
+    public void clear(){
+        while (this.head!=null){
+            ListNode2 cur=this.head.next;
+            this.head.next=null;
+            this.head.prev=null;
+            this.head=cur;
+        }
+        this.last=null;
+    }
