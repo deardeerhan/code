@@ -1,0 +1,25 @@
+class Solution {
+    public String reverseOnlyLetters(String S) {
+        int i=0; 
+        int j=S.length()-1;
+        char[] arr=S.toCharArray();
+        while(i<j){
+        char a=arr[i];
+        char a2=arr[j];
+        if(Character.isLetter(a)&&Character.isLetter(a2)){
+            arr[i]=a2;
+            arr[j]=a;
+            i++;
+            j--;
+        }else if(!Character.isLetter(a)&&Character.isLetter(a2)){
+            i++;
+        }else if(Character.isLetter(a)&&!Character.isLetter(a2)){
+            j--;
+        }else if(!Character.isLetter(a)&&!Character.isLetter(a2)){
+            i++;
+            j--;
+        }
+        }
+        return new String(arr);
+    }
+}
