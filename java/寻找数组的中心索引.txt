@@ -1,0 +1,15 @@
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int sum=0;int index=0;
+        for(int i=0;i<nums.length;i++){
+            sum=sum+nums[i];
+        }
+        for(int i=0;i<nums.length;i++){
+            if(index*2+nums[i]==sum){
+                return i;
+            }
+            index=index+nums[i];
+        }
+        return -1;
+    }
+}
