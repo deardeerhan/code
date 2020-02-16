@@ -1,0 +1,30 @@
+class Solution {
+   public int thirdMax(int[] nums) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        if(nums.length == 1){
+            return nums[0];
+        }
+        if(nums.length == 2){
+            return Math.max(nums[0],nums[1]);
+        }
+        long max = Long.MIN_VALUE;
+        long sec = Long.MIN_VALUE;
+        long third = Long.MIN_VALUE;
+        for(int i = 0;i < nums.length;i++){
+            if(nums[i] > max){
+                third = sec;
+                sec = max;
+                max = nums[i];
+            }else if(nums[i] > sec && nums[i] < max){
+                third = sec;
+                sec = nums[i];
+            }else if(nums[i] > third && nums[i] < sec){
+                third = nums[i];
+            }
+        }
+        return third == Long.MIN_VALUE ? (int)max : (int)third;
+    }
+
+    }
