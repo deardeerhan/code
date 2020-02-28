@@ -1,0 +1,7 @@
+public void preOrder(BTNode root){
+if(root!=null){
+System.out.print(root.val+" ");
+preOrder(root.left);
+preOrder(root.right);
+}
+}
