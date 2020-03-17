@@ -1,0 +1,59 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    private boolean getNodePath(TreeNode root,TreeNode node,Stack<TreeNode> sPath){
+        if(root==null){
+            return false;
+        
+        }
+        sPath.push(root);
+        if(root==node){
+            return true;
+        }
+        if(getNodePath(root.left,node,sPath)||getNodePath(root.right,node,sPath)){
+            return true;
+        }
+        sPath.pop();
+        return false;
+
+    }
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null||p==null||q==null){
+            return null;
+        }
+        Stack<TreeNode> pPath=new Stack<>();
+         Stack<TreeNode> qPath=new Stack<>();
+         getNodePath(root,p,pPath);
+         getNodePath(root,q,qPath);
+         int sizep=pPath.size();
+         int sizeq=qPath.size();
+        while(sizep!=0&&sizeq!=0){
+            if(sizep>sizeq){
+                pPath.pop();
+                sizep--;
+            }else if(sizep<sizeq){
+                qPath.pop();
+                sizeq--;
+            }else{
+                if(pPath.peek()==qPath.peek()){
+                    return pPath.peek();
+                }else{
+                    pPath.pop();
+                    qPath.pop();
+                    sizeq--;
+                    sizeq--;
+            }
+        }
+
+
+    }
+    return null;
+}
+}
