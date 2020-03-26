@@ -1,0 +1,22 @@
+ class Main{
+    public static void main(String[] args) {
+      MyThread myThread=new MyThread();
+//     myThread.start();//匿名内部类
+    myThread.run();//run方法直接调用，不会启动线程，只是在线程main中，调用run方法
+
+       new Thread(new MyRunnable()).start();
+
+    }
+}
+ class MyThread extends Thread {//继承Thread类
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+    }
+}
+class MyRunnable implements Runnable{//实现Runnable接口
+     @Override
+    public void run(){
+         System.out.println(Thread.currentThread().getName());
+     }
+}
