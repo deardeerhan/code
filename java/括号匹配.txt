@@ -1,0 +1,48 @@
+
+import java.util.*;
+//用栈实现
+public class Parenthesis {
+        public boolean chkParenthesis(String A, int n) {
+            // write code here
+            Stack<Character> left=new Stack<>();
+            if(A==null&&A.length()!=n){
+                return false;
+            }
+            for(int i=0;i<A.length();i++){
+                if(A.charAt(i)=='('){
+                    left.push(A.charAt(i));
+                }else if(A.charAt(i)==')'){
+                    if(left.empty()){
+                        return false;
+                    }else {
+                        left.pop();
+                    }
+                    }
+                     else {
+                        return false;
+                }
+            }
+            if(!left.empty()){
+                return false;
+            }else {
+                return true;
+            }
+        }
+        //只有一种括号时
+  public   boolean fun(String s) {
+        if(s.length()%2==1) {
+            return false;
+        }
+        int count=0;
+        for (char c:s.toCharArray()) {
+            if(c=='(') {
+                count++;
+            }else {
+                count--;
+            }
+
+        }
+        return count==0;
+    }
+    }
+
