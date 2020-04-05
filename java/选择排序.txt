@@ -1,0 +1,51 @@
+//选择排序
+    public static void selectSort(int[] array){
+        for(int i=0;i<array.length-1;i++){//趟数   length-1时，区间中只有一个元素，不需要排序
+            int MaxPox=0;//具体选择方式
+            for (int j=1;j<array.length-i;j++){
+                if(array[j]>array[MaxPox]){
+                    MaxPox=j;
+                }
+
+            }
+            if(array.length-1-i!=MaxPox){
+                swap(array,MaxPox,array.length-1-i);
+            }
+        }
+    }
+    //选择排序优化
+    public static void selectSortOP(int[] array){
+        int begin=0,end=array.length-1;
+        while (begin<end){
+            int maxPos=begin;
+            int minPos=begin;
+            int index=begin+1;
+            while (index<=end){
+                if(array[index]>array[maxPos]){
+                    maxPos=index;
+                }
+                if(array[index]<array[minPos]){
+                    minPos=index;
+                }
+                index++;
+            }
+            //将最大元素放在区间最后位置
+            if (maxPos!=end){
+                swap(array,maxPos,end);
+            }
+            //如果最小元素刚好在区间最后一个位置，必须更新minPos
+            if(minPos==end){
+                minPos=maxPos;
+            }
+            if (minPos!=begin){
+                swap(array,minPos,begin);
+            }
+            begin++;
+            end--;
+        }
+    }
+    public  static void swap(int[] array,int left,int right){
+        int tmp=array[left];
+        array[left]=array[right];
+        array[right]=tmp;
+    }
