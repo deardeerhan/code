@@ -1,0 +1,33 @@
+package EveryDay;
+
+import java.util.Scanner;
+
+public class Main {
+    static int count=0;//最后取得结果种类
+    static int n;//口袋
+    static int[] array;//种类(a1,a2...)
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        n=sc.nextInt();
+
+        array=new int[n+1];
+
+        for (int i=1;i<=n;i++){
+            array[i]=sc.nextInt();
+        }
+        count(40,n);
+        System.out.println(count);
+
+    }
+    public static void count(int s,int n){
+        if(s==0){//s代表剩余体积s==0说明满了
+            count++;
+            return ;
+        }
+        if(s<=0||(s>=0&&n<1)){//溢出了或者东西不够了
+            return ;
+        }
+        count(s-array[n],n-1);
+        count(s,n-1);
+    }
+}
