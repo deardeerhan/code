@@ -1,0 +1,14 @@
+ public static void main(String[] args) {
+            Scanner in = new Scanner(System.in);
+                int a = in.nextInt();
+                int b = in.nextInt();
+                int min=(a<b)?a:b;
+           for (int i=min;i<=a*b;i++){
+               if(i%a==0&&i%b==0){
+                   System.out.println(i);
+                  return;
+               }
+           }
+
+
+        }
