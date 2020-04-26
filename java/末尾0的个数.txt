@@ -1,0 +1,13 @@
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int count=0;
+        for (int i=n;i>=5;i--){
+            int k=i;
+            while (k%5==0){
+                count++;
+                k=k/5;
+            }
+        }
+        System.out.println(count);
+    }
