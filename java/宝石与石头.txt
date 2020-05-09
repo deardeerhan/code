@@ -1,0 +1,19 @@
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        //1.统计SS中每个石头放入次数
+        Map<Character,Integer> m=new HashMap<>();
+        for(int i=0;i<S.length();i++){
+            char ch=S.charAt(i);
+            int count=m.getOrDefault(ch,0);
+            m.put(ch,count+1);
+        }
+
+        //2.统计每个宝石出现的次数
+        int jewelCount=0;
+        for(int i=0;i<J.length();i++){
+           jewelCount+= m.getOrDefault(J.charAt(i) ,0);
+
+        }
+        return jewelCount;
+    }
+}
