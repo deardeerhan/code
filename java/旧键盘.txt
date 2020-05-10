@@ -1,0 +1,31 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class BrokenKeyBoard {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while (sc.hasNextLine()){
+            String right=sc.nextLine().toUpperCase();
+            String wrong=sc.nextLine().toUpperCase();
+
+       //将wrong中每个字符放在set中
+            Set<Character> s=new HashSet<>();
+            for (int i=0;i<wrong.length();i++){
+                s.add(wrong.charAt(i));
+            }
+    //检测right中每个字符是否在set中出现过
+            Set<Character> brokens=new HashSet<>();
+            for (int i=0;i<right.length();i++){
+                char ch=right.charAt(i);
+                if (!s.contains(ch)){
+                   if (brokens.add(ch)){
+                       System.out.print(ch);
+                   }
+                }
+            }
+
+            System.out.println();
+        }
+    }
+}
