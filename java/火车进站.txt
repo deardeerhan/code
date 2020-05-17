@@ -1,0 +1,40 @@
+package EveryDay;
+
+import java.util.Scanner;
+
+public class TrainArrive {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while (sc.hasNext()){
+            int N=sc.nextInt();
+            int[] nums=new int[N];
+            for (int i=0;i<N;i++){
+                nums[i]=sc.nextInt();
+            }
+            permutation(nums,0);
+        }
+    }
+    public static void permutation(int[] array,int start){
+        //表示只有一个字符，返回
+        if(start==array.length-1)
+        {
+            for (int i:array){
+                System.out.print(i+" ");
+            }
+            System.out.println();
+        }
+        else{
+            for(int i=start;i<array.length;i++){
+                swap(array, start,i);//当前位置元素与后面位置的元素依次替换
+                permutation(array, start+1);
+                swap(array,start,i);//将位置换回来,继续做下一个排列
+            }
+        }
+    }
+    public static void swap(int [] array,int s,int i){
+        int temp=array[s];
+        array[s]=array[i];
+        array[i]=temp;
+    }
+
+}
