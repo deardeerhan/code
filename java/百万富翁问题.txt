@@ -1,0 +1,13 @@
+package EveryDay;
+
+public class Millionaire {
+
+    public static void main(String[] args) {
+        int rich = 300;
+        int   poor=0;
+        for (int i=0;i<30;i++ ){
+            poor+=(int)Math.pow(2,i);
+        }
+        System.out.print(rich+" "+poor);
+    }
+}
