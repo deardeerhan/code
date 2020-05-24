@@ -1,0 +1,32 @@
+package EveryDay;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class WeChatMoney {
+    public int getValue(int[] gifts, int n) {
+        // write code here
+        int result=0;
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int a=0;
+        if (n%2==0){
+            a=n/2;
+        }else {
+            a=(n/2)+1;
+        }
+        for (int i=0;i<gifts.length;i++){
+            int count=map.getOrDefault(gifts[i],0);
+            map.put(gifts[i],count+1);
+        }
+
+
+        for (Map.Entry<Integer,Integer> entry:map.entrySet()){
+            int num=entry.getKey();
+            int c=entry.getValue();
+            if (c>=a){
+                result=num;
+            }
+        }
+        return result;
+    }
+}
