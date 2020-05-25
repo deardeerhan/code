@@ -1,0 +1,22 @@
+package EveryDay;
+
+import java.util.Scanner;
+
+public class MonthRubit {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while (sc.hasNext()){
+            int month=sc.nextInt();
+
+            System.out.println( getTotalCount(month));
+        }
+
+    }
+    public static int getTotalCount(int m){
+        if (m<=2){
+            return 1;
+        }else {
+            return getTotalCount(m-1)+getTotalCount(m-2);
+        }
+    }
+}
