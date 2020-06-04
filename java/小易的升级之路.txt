@@ -1,0 +1,35 @@
+package EveryDay;
+
+import java.util.Scanner;
+
+public class LevelXY {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while (sc.hasNext()){
+            int n=sc.nextInt();//怪物数量
+            int a=sc.nextInt();//小易能量初始值
+            int[] arr=new int[n];
+            for (int i=0;i<n;i++){
+                arr[i]=sc.nextInt();
+            }
+            for (int i=0;i<arr.length;i++){
+                if (arr[i]<a){
+                    a=a+arr[i];
+                }else {
+                    a=a+func(arr[i],a);
+                }
+            }
+            System.out.println(a);
+        }
+    }
+    public static int func(int i,int a){
+        int max=i>a?i:a;
+        int min=i>a?a:i;
+        for (int j=min;j>0;j--){
+            if (min%j==0&&max%j==0){
+                return j;
+            }
+        }
+        return 0;
+    }
+}
