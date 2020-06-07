@@ -1,0 +1,60 @@
+package EveryDay;
+
+import java.util.Scanner;
+
+public class GradePoint {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+
+            int n=sc.nextInt();
+            int[] a=new int[n];//存放学分
+            int[] b=new int[n];//存放对应成绩
+            int v=0;//总学分
+            double sum=0;
+            for (int i=0;i<n;i++){
+                a[i]= sc.nextInt();
+                v=v+a[i];
+            }
+            for (int i=0;i<n;i++){
+                b[i]= sc.nextInt();
+            }
+
+
+            for (int i=0;i<n;i++){
+                int grade=b[i];
+                if (grade>=90){
+                    sum=sum+4.0*a[i];
+                }
+                if (grade>=85&&grade<=89){
+                    sum=sum+3.7*a[i];
+                }
+                if (grade<=84&&grade>=82){
+                    sum=sum+3.3*a[i];
+                }
+                if (grade<=81&&grade>=78){
+                    sum=sum+3.0*a[i];
+                }
+                if (grade<=77&&grade>=75){
+                    sum=sum+2.7*a[i];
+                }
+                if (grade<=74&&grade>=72){
+                    sum=sum+2.3*a[i];
+                }
+                if (grade<=71&&grade>=68){
+                    sum=sum+2.0*a[i];
+                }
+                if (grade<=67&&grade>=64){
+                    sum=sum+1.5*a[i];
+                }
+                if (grade<=63&&grade>=60){
+                    sum=sum+1.0*a[i];
+                }
+                if (grade<60);{
+                    sum+=0;
+                }
+            }
+        System.out.println(String.format("%.2f",sum/v));
+        }
+    }
+
+
