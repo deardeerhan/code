@@ -1,0 +1,89 @@
+package EveryDay;
+
+import java.util.Scanner;
+
+public class RMBTransform {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            String str = sc.nextLine();
+            String[] s = str.split("\\.");
+            int len = s[0].length();
+            String s1 = "";
+            String s2 = s[0];
+            if(s[0].charAt(0) != '0'){//ÅÐ¶ÏÕûÊýÎ»
+                while(len >0){
+                    if(len < 5){
+                        s1 += main1(s2);
+                        s1+="Ôª";
+                        len = 0;
+                    }else if(len <= 8){
+                        s1 += main1(s2.substring(0,len-4));
+                        s2 = s2.substring(len-4);
+                        s1+= "Íò";
+                        len = s2.length();
+                    }else{
+                        s1 += main1(s2.substring(0,len-8));
+                        s2 = s2.substring(len-8);
+                        s1 +="ÒÚ";
+                        len = s2.length();
+                    }
+
+                }
+            }
+            if(s[1].charAt(0) == s[1].charAt(1) && s[1].charAt(0) == '0'){
+                System.out.println("ÈËÃñ±Ò"+s1+"Õû");
+                return;
+            }
+            for(int i =0;i<2;i++){//ÅÐ¶ÏÐ¡ÊýÎ»
+                String[] ss = {"·Ö","½Ç"};
+                switch(s[1].charAt(i)){
+                    case '0':break;
+                    case '1':
+                        s1 = s1+ "Ò¼"+ss[2-i-1];break;
+                    case '2': s1 = s1 + "·¡"+ss[2-i-1];break;
+                    case '3': s1+=("Èþ"+ss[2-i-1]);break;
+                    case '4': s1+=("ËÁ"+ss[2-i-1]);break;
+                    case '5': s1+=("Îé"+ss[2-i-1]);break;
+                    case '6': s1+=("Â½"+ss[2-i-1]);break;
+                    case '7': s1+=("Æâ"+ss[2-i-1]);break;
+                    case '8': s1+=("°Æ"+ss[2-i-1]);break;
+                    case '9': s1+=("¾Á"+ss[2-i-1]);break;
+
+                }
+            }
+            System.out.println("ÈËÃñ±Ò"+s1);
+        }
+    }
+    public static String main1(String s){
+        int len = s.length();
+        int len1 = len;
+        String s1 = "";
+        String[] ss = {"","Ê°","°Û","Çª"};
+        for(int i = 0;i<len;i++){
+            while(i!= len-1 && s.charAt(i) == '0'&&s.charAt(i+1) == '0'){
+                i++;
+            }
+            switch(s.charAt(i)){
+                case '0': s1+="Áã";break;
+                case '1': if(len1 == 2){
+                    s1 += ss[len -i-1];
+                }else{
+                    s1 = s1+ "Ò¼"+ss[len-i-1];
+                }break;
+                case '2': s1 = s1 + "·¡"+ss[len-i-1];break;
+                case '3': s1+=("Èþ"+ss[len-i-1]);break;
+                case '4': s1+=("ËÁ"+ss[len-i-1]);break;
+                case '5': s1+=("Îé"+ss[len-i-1]);break;
+                case '6': s1+=("Â½"+ss[len-i-1]);break;
+                case '7': s1+=("Æâ"+ss[len-i-1]);break;
+                case '8': s1+=("°Æ"+ss[len-i-1]);break;
+                case '9': s1+=("¾Á"+ss[len-i-1]);break;
+
+            }
+            len1 --;
+        }
+        return s1;
+    }
+
+}
