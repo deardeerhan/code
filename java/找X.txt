@@ -1,0 +1,29 @@
+package EveryDay;
+
+import java.util.Scanner;
+
+public class FingX {
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            if(n<1||n>200){
+                continue;
+            }
+            int[] arr=new int[n];
+            for(int i=0;i<n;i++){
+                arr[i]=sc.nextInt();
+            }
+            int x=sc.nextInt();
+            System.out.println(findX(x,arr));
+        }
+    }
+    private static int findX(int x, int[] arr) {
+        for(int i=0;i<arr.length;i++){
+            if(x==arr[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
