@@ -1,0 +1,32 @@
+package EveryDay;
+
+import java.util.Scanner;
+
+public class ShouXingNumber {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while (sc.hasNext()){
+            int n=sc.nextInt();
+            if (n<2||n>=100){
+               break;
+            }
+            int N=n*n;
+            if (n<10) {
+                if ((N - n) % 10 == 0) {
+                    System.out.println("Yes!");
+                } else {
+                    System.out.println("NO!");
+                }
+            }else {
+                if( (N-n)%100==0){
+                    System.out.println("Yes!");
+                }
+                else {
+                    System.out.println("NO!");
+                }
+            }
+
+        }
+    }
+
+}
