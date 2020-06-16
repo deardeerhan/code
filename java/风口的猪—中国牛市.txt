@@ -1,0 +1,42 @@
+public class Solution {
+
+    public final static int MAXN=105; 
+
+    /**
+     * 计算你能获得的最大收益
+     * 
+     * @param prices Prices[i]即第i天的股价
+     * @return 整型
+     */
+    public int calculateMax(int[] prices) {
+        if(prices==null || prices.length<2){
+            return 0;
+        }
+
+        //left[i]表示0到i一次买入卖出最大收益
+        //minx表示最小股价
+        int left[]=new int[MAXN];
+        left[0]=0;
+        int minx=prices[0];
+        for(int i=1;i<prices.length;i++){
+            left[i]=Math.max(left[i-1],prices[i]-minx);
+            minx=Math.min(minx, prices[i]);
+        }
+
+        //right[i]表示i到len-1一次买入卖出最大收益
+        //minx表示最小股价
+        int right[]=new int[MAXN];
+        right[prices.length-1]=0;
+        int maxx=prices[prices.length-1];
+        for(int i=prices.length-2;i>=0;i--){
+            right[i]=Math.max(right[i+1],maxx-prices[i]);
+            maxx=Math.max(maxx, prices[i]);
+        }
+
+        int ans=0;
+        for(int i=0;i<prices.length;i++){
+            ans=Math.max(ans,left[i]+right[i]);
+        }
+        return ans;
+    }
+}
