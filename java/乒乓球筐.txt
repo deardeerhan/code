@@ -1,0 +1,51 @@
+// write your code here
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+
+            String A = sc.next() + " ";
+
+
+            String B = sc.next();
+
+          
+
+            //A一定大于B的长度，否则错误
+
+            if(A.length() < B.length()){
+                System.out.println("No");
+                break;
+            }
+           
+            char[] array1 = A.toCharArray();
+            char[] array2 = B.toCharArray();
+
+             
+
+            for(int i = 0;i < array2.length;i++){
+                for(int j = 0;j < array1.length;j++){
+                    if(array2[i] == array1[j]){
+                        array2[i] = array1[j] = '1';
+                        break;
+                    }
+                }
+            }
+            
+            int i = 0;
+             
+            for(;i < array2.length;i++){
+                if(array2[i] != '1'){
+                    System.out.println("No");
+                    break;
+                }
+            }
+
+            if(i >= array2.length){
+                System.out.println("Yes");
+            }
+           
+        }
+    }
+}
